@@ -1,10 +1,20 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './src/screens/HomeScreen';
-import LayoutScreen from './src/screens/LayoutScreen';
+import ListScreen from './src/screens/ListScreen';
+import { loadTimeStamps } from './src/Utils/AsyncStorageHelper';
 
-const navigator = createStackNavigator({
-  Home: HomeScreen,
-  Layout: LayoutScreen
-});
+loadTimeStamps();
+const navigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    List: ListScreen
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      title: 'Timestamps App'
+    }
+  }
+);
 
 export default createAppContainer(navigator);
